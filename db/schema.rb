@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_05_26_185007) do
+ActiveRecord::Schema[7.0].define(version: 2023_05_26_190238) do
   create_table "contacts", force: :cascade do |t|
     t.string "first_name"
     t.string "last_name"
@@ -18,6 +18,18 @@ ActiveRecord::Schema[7.0].define(version: 2023_05_26_185007) do
     t.string "city"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "payments", force: :cascade do |t|
+    t.integer "contact_id"
+    t.integer "advanced_amount"
+    t.datetime "payment_date"
+    t.string "deducted_from_bl"
+    t.integer "amount_deducted"
+    t.integer "total_rebate"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["contact_id"], name: "index_payments_on_contact_id"
   end
 
 end
