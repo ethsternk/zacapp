@@ -1,0 +1,15 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  advanced_amount: 1
+  payment_date: 2023-05-26 15:02:38
+  deducted_from_bl: MyString
+  amount_deducted: 1
+  total_rebate: 1
+
+two:
+  advanced_amount: 1
+  payment_date: 2023-05-26 15:02:38
+  deducted_from_bl: MyString
+  amount_deducted: 1
+  total_rebate: 1
