@@ -16,6 +16,13 @@ ActiveRecord::Schema[7.0].define(version: 2023_05_26_190238) do
     t.string "last_name"
     t.string "address"
     t.string "city"
+    t.string "state_or_province"
+    t.string "postal_code"
+    t.string "home_phone"
+    t.string "mobile_phone"
+    t.string "notes"
+    t.string "paid_in_full"
+    t.string "email"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
