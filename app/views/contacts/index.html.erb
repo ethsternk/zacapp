@@ -1,3 +1,8 @@
-<h1>Contacts#index</h1>
-<h2>here be the people. salute emoji</h2>
-<p>Find me in app/views/contacts/index.html.erb</p>
+<h1>Contacts</h1>
+<ul>
+  <% @contacts.each do |contact| %>
+    <li>
+      <%= link_to (contact.first_name + ' ' + contact.last_name), contact %>
+    </li>
+  <% end %>
+</ul>

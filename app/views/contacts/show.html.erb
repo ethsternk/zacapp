@@ -1,0 +1,10 @@
+<h1><%= @contact.first_name %> <%= @contact.last_name %></h1>
+<%= link_to '<-- Go back', contacts_path %>
+<ul>
+  <li>Address: <%= @contact.address %> <%= @contact.city %> <%= @contact.state_or_province %> <%= @contact.postal_code %></li>
+  <li>Home: <%= @contact.home_phone %></li>
+  <li>Mobile: <%= @contact.mobile_phone %></li>
+  <li>Notes: <%= @contact.notes %></li>
+  <li>Paid In Full: <%= @contact.paid_in_full %></li>
+  <li>Email: <%= @contact.email %></li>
+</ul>
