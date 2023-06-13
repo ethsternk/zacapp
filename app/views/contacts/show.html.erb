@@ -3,6 +3,9 @@
   def price_formatter(price)
     "$" + price.to_s.reverse.scan(/.{1,3}/).join(',').reverse
   end
+  @deposits = @payments.map(&:advanced_amount).sum
+  @withdrawls = @payments.map(&:amount_deducted).sum
+  @balance = @deposits - @withdrawls
 %>
 
 <h1><%= @contact.first_name %> <%= @contact.last_name %></h1>
@@ -16,6 +19,7 @@
   <li>Email: <%= @contact.email %></li>
 </ul>
 <h2>Balance</h2>
+<p><%= price_formatter(@balance)%></p>
 
 <h2>Payments</h2>
 <% @payments.each do |payment| %>
