@@ -14,11 +14,11 @@ namespace :payments do
         payment = Payment.new
         payment.id = row[0]
         payment.contact_id = row[1]
-        payment.advanced_amount = row[2]
-        payment.payment_date = row[3] ? Date.strptime(row[3], "%m/%d/%y") : nil
+        payment.advanced_amount = row[2] || 0
+        payment.payment_date = row[3] ? Date.strptime(row[3], "%m/%d/%y") : nil # needs rescue
         payment.deducted_from_bl = row[4]
-        payment.amount_deducted = row[5]
-        payment.total_rebate = row[6]
+        payment.amount_deducted = row[5] || 0
+        payment.total_rebate = row[6] || 0
         payment.save!
       rescue StandardError => e
         puts "Row #{row[0]} could not be processed. Error: #{e}"

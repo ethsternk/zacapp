@@ -3,15 +3,17 @@ require 'fileutils'
 
 namespace :contacts do
   desc 'import contacts from CSV file'
-  task :import, [:file_path] => :environment do |_t, args|
+  task :import, [:file_path, :first_id] => :environment do |_t, args|
     file_path = args.fetch(:file_path)
+    first_id = args.fetch(:first_id).to_i
 
     raise "File #{file_path} does not exist" unless File.exist? file_path
 
     File.open(file_path) do |file|
       CSV.foreach(file) do |row|
         contact = Contact.new
-        contact.id = row[0]
+        id = row[0].to_i
+        contact.id = id == 0 ? first_id : id
         contact.first_name = row[1]
         contact.last_name = row[2]
         contact.address = row[3]

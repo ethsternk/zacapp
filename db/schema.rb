@@ -29,11 +29,11 @@ ActiveRecord::Schema[7.0].define(version: 2023_05_26_190238) do
 
   create_table "payments", force: :cascade do |t|
     t.integer "contact_id"
-    t.integer "advanced_amount"
+    t.decimal "advanced_amount", precision: 8, scale: 2
     t.datetime "payment_date"
     t.string "deducted_from_bl"
-    t.integer "amount_deducted"
-    t.integer "total_rebate"
+    t.decimal "amount_deducted", precision: 8, scale: 2
+    t.decimal "total_rebate", precision: 8, scale: 2
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["contact_id"], name: "index_payments_on_contact_id"
