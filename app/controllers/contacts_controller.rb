@@ -22,6 +22,20 @@ class ContactsController < ApplicationController
     end
   end
 
+  def edit
+    @contact = Contact.find(params[:id])
+  end
+
+  def update
+    contact = Contact.find(params[:id])
+
+    if contact.update(contact_params)
+      redirect_to contact
+    else
+      render :edit, status: :unprocessable_entity
+    end
+  end
+
   private
     def contact_params
       params.require(:contact).permit(:first_name, :last_name, :address, :city, :state_or_province, :postal_code, :home_phone, :mobile_phone, :notes, :paid_in_full, :email)
