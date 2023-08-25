@@ -1,11 +1,7 @@
 Rails.application.routes.draw do
   root 'contacts#index'
 
-  resources :contacts
-  resources :payments
-  
-  # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
-
-  # Defines the root path route ("/")
-  # root "articles#index"
+  resources :contacts do
+    resources :payments
+  end
 end

@@ -16,8 +16,32 @@
   <li>Email: <%= @contact.email %></li>
 </ul>
 <%= link_to 'Edit Contact', edit_contact_path(@contact) %>
+
 <h2>Balance</h2>
 <p><%= number_to_currency(@balance)%></p>
+
+<h2>Add a payment:</h2>
+<%= form_with model: [ @contact, @contact.payments.build ] do |form| %>
+  <p>
+    <%= form.label :advanced_amount %><br>
+    <%= form.text_field :advanced_amount %>
+  </p>
+  <p>
+    <%= form.label :deducted_from_bl %><br>
+    <%= form.text_field :deducted_from_bl %>
+  </p>
+  <p>
+    <%= form.label :amount_deducted %><br>
+    <%= form.text_field :amount_deducted %>
+  </p>
+  <p>
+    <%= form.label :total_rebate %><br>
+    <%= form.text_field :total_rebate %>
+  </p>
+  <p>
+    <%= form.submit %>
+  </p>
+<% end %>
 
 <h2>Payments</h2>
 <% @payments.each do |payment| %>
@@ -28,5 +52,6 @@
     <li>Deducted From BL: <%= payment.deducted_from_bl %></li>
     <li>Amount Deducted: <%= number_to_currency(payment.amount_deducted) %></li>
     <li>Total Rebate: <%= number_to_currency(payment.total_rebate) %></li>
+    <li>Edit / Delete</li>
   </ul>
 <% end %>

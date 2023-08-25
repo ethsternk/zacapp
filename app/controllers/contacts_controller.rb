@@ -5,7 +5,7 @@ class ContactsController < ApplicationController
 
   def show
     @contact = Contact.find(params[:id])
-    @payments = @contact.payments
+    @payments = @contact.payments.sort_by(&:payment_date).reverse
   end
 
   def new
