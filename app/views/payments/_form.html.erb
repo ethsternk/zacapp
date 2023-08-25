@@ -1,0 +1,30 @@
+<%= form_with model: [payment.contact, payment] do |form| %>
+  <div>
+    <%= form.label :advanced_amount %><br>
+    <%= form.text_field :advanced_amount %>
+    <% payment.errors.full_messages_for(:advanced_amount).each do |message| %>
+      <div style="color:red;"><%= message %></div>
+    <% end %>
+  </div>
+  <div>
+    <%= form.label :deducted_from_bl %><br>
+    <%= form.text_field :deducted_from_bl %>
+  </div>
+  <div>
+    <%= form.label :amount_deducted %><br>
+    <%= form.text_field :amount_deducted %>
+    <% payment.errors.full_messages_for(:amount_deducted).each do |message| %>
+      <div style="color:red;"><%= message %></div>
+    <% end %>
+  </div>
+  <div>
+    <%= form.label :total_rebate %><br>
+    <%= form.text_field :total_rebate %>
+  </div>
+
+  <p></p>
+
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>

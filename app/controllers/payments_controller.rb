@@ -1,6 +1,7 @@
 class PaymentsController < ApplicationController
   def new
-    @payment = Payment.new
+    @contact = Contact.find(params[:contact_id])
+    @payment = @contact.payments.new
   end
 
   def create
@@ -15,19 +16,22 @@ class PaymentsController < ApplicationController
     end
   end
 
-  # def edit
-  #   @payment = Payment.find(params[:id])
-  # end
+  def edit
+    @contact = Contact.find(params[:contact_id])
+    @payment = @contact.payments.find(params[:id])
+  end
 
-  # def update
-  #   payment = Payment.find(params[:id])
+  def update
+    contact = Contact.find(params[:contact_id])
+    payment = contact.payments.create(payment_params)
+    payment.payment_date = Date.today
 
-  #   if payment.update(contact_params)
-  #     redirect_to contact
-  #   else
-  #     render :edit, status: :unprocessable_entity
-  #   end
-  # end
+    if payment.update(payment_params)
+      redirect_to contact
+    else
+      render :edit, status: :unprocessable_entity
+    end
+  end
 
   def destroy
     @contact = Contact.find(params[:contact_id])

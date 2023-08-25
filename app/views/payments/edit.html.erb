@@ -1,0 +1,6 @@
+<h1>Edit Payment for <%= @contact.first_name %> <%= @contact.last_name %></h1>
+
+<%= link_to '<-- Go back', contact_path(@contact) %>
+<p></p>
+
+<%= render 'form', payment: @payment %>
