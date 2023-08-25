@@ -37,11 +37,9 @@ class PaymentsController < ApplicationController
     @contact = Contact.find(params[:contact_id])
     @payment = @contact.payments.find(params[:id])
 
-    if @payment.destroy
-      redirect_to contact_path(@contact)
-    else
-      render :edit, status: :unprocessable_entity
-    end
+    @payment.destroy
+
+    redirect_to contact_path(@contact)
   end
 
   private

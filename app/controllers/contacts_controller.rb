@@ -38,7 +38,7 @@ class ContactsController < ApplicationController
 
   def destroy
     @contact = Contact.find(params[:id])
-    render :show, status: :unprocessable_entity unless @contact.payments.empty?
+    return unless @contact.payments.empty?
 
     @contact.destroy
 
