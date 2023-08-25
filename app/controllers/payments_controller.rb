@@ -40,7 +40,7 @@ class PaymentsController < ApplicationController
     if @payment.destroy
       redirect_to contact_path(@contact)
     else
-      render :destroy, status: :unprocessable_entity
+      render :edit, status: :unprocessable_entity
     end
   end
 

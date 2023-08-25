@@ -36,6 +36,15 @@ class ContactsController < ApplicationController
     end
   end
 
+  def destroy
+    @contact = Contact.find(params[:id])
+    render :show, status: :unprocessable_entity unless @contact.payments.empty?
+
+    @contact.destroy
+
+    redirect_to contacts_path, status: :see_other
+  end
+
   private
     def contact_params
       params.require(:contact).permit(:first_name, :last_name, :address, :city, :state_or_province, :postal_code, :home_phone, :mobile_phone, :notes, :paid_in_full, :email)

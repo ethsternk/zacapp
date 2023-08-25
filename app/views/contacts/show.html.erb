@@ -15,6 +15,18 @@
   <li>Paid In Full: <%= @contact.paid_in_full %></li>
   <li>Email: <%= @contact.email %></li>
   <li><%= link_to 'Edit', edit_contact_path(@contact) %></li>
+  <% if @payments.empty? %>
+    <li>
+      <%= button_to 'Delete',
+                    @contact,
+                    method: :delete,
+                    class: :destroy_contact,
+                    data: {
+                      turbo_method: :delete,
+                      turbo_confirm: "Are you sure you want to delete this contact?"
+                    } %>
+    </li>
+  <% end %>
 </ul>
 
 <h2>Balance</h2>
@@ -42,3 +54,4 @@
     </li>
   </ul>
 <% end %>
+<p>Delete all payments to enable deleting contact.</p>
