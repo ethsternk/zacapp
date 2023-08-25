@@ -31,6 +31,14 @@
     <li>Amount Deducted: <%= number_to_currency(payment.amount_deducted) %></li>
     <li>Total Rebate: <%= number_to_currency(payment.total_rebate) %></li>
     <li><%= link_to 'Edit', edit_contact_payment_path(payment.contact, payment) %></li>
-    <li><%= button_to 'Delete', [payment.contact, payment], :method=>:delete, :class=>:destroy%></li>
+    <li>
+      <%= button_to 'Delete',
+                    [payment.contact, payment],
+                    method: :delete,
+                    data: {
+                      turbo_method: :delete,
+                      turbo_confirm: "Are you sure you want to delete this payment?"
+                    } %>
+    </li>
   </ul>
 <% end %>
