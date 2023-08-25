@@ -52,6 +52,6 @@
     <li>Deducted From BL: <%= payment.deducted_from_bl %></li>
     <li>Amount Deducted: <%= number_to_currency(payment.amount_deducted) %></li>
     <li>Total Rebate: <%= number_to_currency(payment.total_rebate) %></li>
-    <li>Edit / Delete</li>
+    <li><%= button_to 'Delete', [payment.contact, payment], :method=>:delete, :class=>:destroy%></li>
   </ul>
 <% end %>

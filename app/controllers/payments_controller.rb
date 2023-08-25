@@ -29,6 +29,17 @@ class PaymentsController < ApplicationController
   #   end
   # end
 
+  def destroy
+    @contact = Contact.find(params[:contact_id])
+    @payment = @contact.payments.find(params[:id])
+
+    if @payment.destroy
+      redirect_to contact_path(@contact)
+    else
+      render :destroy, status: :unprocessable_entity
+    end
+  end
+
   private
     def payment_params
       params.require(:payment).permit(:advanced_amount, :deducted_from_bl, :amount_deducted, :total_rebate)
