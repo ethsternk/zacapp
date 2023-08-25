@@ -7,6 +7,13 @@
     <% end %>
   </div>
   <div>
+    <%= form.label :payment_date %><br>
+    <%= form.date_field :payment_date %>
+    <% payment.errors.full_messages_for(:payment_date).each do |message| %>
+      <div style="color:red;"><%= message %></div>
+    <% end %>
+  </div>
+  <div>
     <%= form.label :deducted_from_bl %><br>
     <%= form.text_field :deducted_from_bl %>
   </div>
