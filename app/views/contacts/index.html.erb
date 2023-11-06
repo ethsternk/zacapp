@@ -2,8 +2,13 @@
 <%= link_to 'Create new', new_contact_path %>
 <ul>
   <% @contacts.each do |contact| %>
+    <%
+      deposits = contact.payments.map(&:advanced_amount).sum
+      withdrawls = contact.payments.map(&:amount_deducted).sum
+      balance = deposits - withdrawls
+    %>
     <li>
-      <%= link_to (contact.first_name + ' ' + contact.last_name), contact %>
+      <%= link_to (contact.first_name + ' ' + contact.last_name), contact %> - <%= number_to_currency(balance)%>
     </li>
   <% end %>
 </ul>
